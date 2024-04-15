@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
+    <script>
+        window.onload = function() {
+            // Запит імені користувача через prompt
+            let userName = prompt("Введіть ваше ім'я:", "Гість");
+
+            // Підтвердження введеного імені через confirm
+            if (confirm("Ваше ім'я " + userName + "? Натисніть OK для підтвердження або Cancel для скасування.")) {
+                // Якщо користувач підтверджує, виводиться привітання через alert
+                alert("Ласкаво просимо, " + userName + "!");
+            } else {
+                // Якщо користувач скасовує, знову запитується ім'я
+                userName = prompt("Введіть ваше ім'я знову:", "Гість");
+                alert("Дякуємо, " + userName);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Взаємодія з користувачем</h1>
+    <p>Відкрийте цю сторінку в браузері для перегляду діалогових вікон.</p>
+</body>
+</html>
