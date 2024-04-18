@@ -1,7 +1,32 @@
 /**
+ * У JavaScript різні оператори і конструкції поводяться певним чином, коли мають справу з різними типами даних. Ось основні правила,
+ * які допомагають зрозуміти, як виконуються вирази в наданому коді:
+
+Конкатенація та Арифметичні Операції:
+Якщо один з операндів є рядком, оператор + виконує конкатенацію, а не арифметичне додавання. Наприклад, 'number' + 3 перетворює число 3 на рядок і конкатенує його з 'number'.
+Для операторів, таких як -, /, *, якщо можливо, всі операнди спочатку намагаються конвертуватися в числа.
+Перетворення типів:
+Унарний + (наприклад, +'40') перетворює рядок в число, якщо це можливо.
+Логічні значення true і false при арифметичних операціях перетворюються відповідно на 1 та 0.
+Значення null у числовому контексті перетворюється в 0.
+Якщо рядок не може бути прямо перетворений в число (наприклад, '4px'), результатом арифметичних операцій буде NaN (не число).
+Логічні Операції:
+Оператор && повертає перший операнд, якщо він є false; інакше повертає другий операнд.
+Оператор || повертає перший операнд, якщо він є true; інакше повертає другий операнд.
+Оператор ! (логічне заперечення) перетворює операнд в логічне значення, якщо він не є вже логічним, і потім інвертує його.
+Порівняння:
+Оператор == (не строге порівняння) спочатку намагається перетворити обидва операнди в спільний тип перед порівнянням.
+=== (строге порівняння) перевіряє рівність без перетворення типів, тому операнди мають бути одного типу.
+Порівняння, наприклад, null == '' (порожній рядок), поверне false, бо за правилами JavaScript null рівне тільки null та undefined.
+Правила Приоритету:
+Деякі оператори мають вищий пріоритет за інші. Наприклад, оператор множення (*) і ділення (/) мають вищий пріоритет,
+ніж додавання (+) і віднімання (-). Тому вираз 3 + 2 * 4 обчислюється як 3 + (2 * 4).
+ *
+====================================HW====================================
+
  * Код: 'number' + 3 + 3
 Очікуваний результат: 'number33'
-Опис: Спочатку рядок 'number' конкатенується з числом 3, яке перетворюється на рядок, утворюючи 'number3'. 
+Опис: Спочатку рядок 'number' конкатенується з числом 3, яке перетворюється на рядок, утворюючи 'number3'.
 Потім, друге число 3 також перетворюється на рядок і конкатенується з 'number3', результатом є 'number33'.
 
 Код: null + 3
@@ -84,11 +109,11 @@
  * @param {any} result - The result of an expression to be formatted.
  * @returns {string} The formatted string representation of the result.
  */
-function formatResult(result) {
-    if (typeof result === 'number' || typeof result === 'boolean' || result === null || Number.isNaN(result)) {
-        return String(result);
-    }
-    return `'${result}'`;
+function formatResult (result) {
+  if (typeof result === 'number' || typeof result === 'boolean' || result === null || Number.isNaN(result)) {
+    return String(result)
+  }
+  return `'${result}'`
 }
 
 /**
@@ -97,33 +122,33 @@ function formatResult(result) {
  * and its evaluated result. It iterates through this array, and for each element,
  * it logs the expression and its formatted result to the console.
  */
-function outputExpressionResults() {
-    const expressions = [
-        { expr: "'number' + 3 + 3", result: 'number' + 3 + 3 },
-        { expr: "null + 3", result: null + 3 },
-        { expr: "5 && 'qwerty'", result: 5 && "qwerty" },
-        { expr: "+'40' + +'2' + 'hillel'", result: +'40' + +'2' + "hillel" },
-        { expr: "'10' - 5 === 6", result: '10' - 5 === 6 },
-        { expr: "true + false", result: true + false },
-        { expr: "'4px' - 3", result: '4px' - 3 },
-        { expr: "'4' - 3", result: '4' - 3 },
-        { expr: "'6' + 3 ** 0", result: '6' + 3 ** 0 },
-        { expr: "12 / '6'", result: 12 / '6' },
-        { expr: "'10' + (5 === 6)", result: '10' + (5 === 6) },
-        { expr: "null == ''", result: null == '' },
-        { expr: "3 ** (9 / 3)", result: 3 ** (9 / 3) },
-        { expr: "!!'false' == !!'true'", result: !!'false' == !!'true' },
-        { expr: "0 || '0' && 1", result: 0 || '0' && 1 },
-        { expr: "(+null == false) < 1", result: (+null == false) < 1 },
-        { expr: "false && true || true", result: false && true || true },
-        { expr: "false && (false || true)", result: false && (false || true) },
-        { expr: "(+null == false) < 1 ** 5", result: (+null == false) < 1 ** 5 }
-    ];
+function outputExpressionResults () {
+  const expressions = [
+    { expr: "'number' + 3 + 3", result: 'number' + 3 + 3 },
+    { expr: 'null + 3', result: null + 3 },
+    { expr: "5 && 'qwerty'", result: 5 && 'qwerty' },
+    { expr: "+'40' + +'2' + 'hillel'", result: +'40' + +'2' + 'hillel' },
+    { expr: "'10' - 5 === 6", result: '10' - 5 === 6 },
+    { expr: 'true + false', result: true + false },
+    { expr: "'4px' - 3", result: '4px' - 3 },
+    { expr: "'4' - 3", result: '4' - 3 },
+    { expr: "'6' + 3 ** 0", result: '6' + 3 ** 0 },
+    { expr: "12 / '6'", result: 12 / '6' },
+    { expr: "'10' + (5 === 6)", result: '10' + (5 === 6) },
+    { expr: "null == ''", result: null == '' },
+    { expr: '3 ** (9 / 3)', result: 3 ** (9 / 3) },
+    { expr: "!!'false' == !!'true'", result: !!'false' == !!'true' },
+    { expr: "0 || '0' && 1", result: 0 || '0' && 1 },
+    { expr: '(+null == false) < 1', result: (+null == false) < 1 },
+    { expr: 'false && true || true', result: false && true || true },
+    { expr: 'false && (false || true)', result: false && (false || true) },
+    { expr: '(+null == false) < 1 ** 5', result: (+null == false) < 1 ** 5 }
+  ]
 
-    expressions.forEach(({ expr, result }) => {
-        console.log(`${expr} = ${formatResult(result)}`);
-    });
+  expressions.forEach(({ expr, result }) => {
+    console.log(`${expr} = ${formatResult(result)}`)
+  })
 }
 
 // Call the function to output the results
-outputExpressionResults();
+outputExpressionResults()
