@@ -4,7 +4,7 @@
 // 1. Arithmetic Operators
 // Addition (+)
 let addition = 5 + 3; // equals 8
-
+console.log(addition);
 // Subtraction (-)
 let subtraction = 5 - 3; // equals 2
 

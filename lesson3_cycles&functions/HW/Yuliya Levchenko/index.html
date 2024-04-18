@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Input</title>
+  </head>
+  <body>
+    <h1>How old are you?</h1>
+    <script src="generateYears1.js"></script> <!-- Видалений атрибут defer для спрощення -->
+    <script>
+      function validateInput(input) {
+        return !isNaN(input) && parseInt(input) > 0; // Використання parseInt для переконання, що введення є числом
+      }
+
+      let userInput = prompt("How old are you?");
+
+      if (validateInput(userInput)) {
+        generateYears(userInput); // Функція викликається тільки після підтвердження, що введення є правильним
+      } else {
+        document.body.innerHTML = "<p>Invalid input. Please enter a positive number.</p>"; // Помилкове введення виводиться на сторінці
+      }
+    </script>
+  </body>
+</html>
