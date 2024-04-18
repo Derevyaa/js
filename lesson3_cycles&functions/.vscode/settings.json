@@ -1,0 +1,32 @@
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,  // Ensure the editor formats the file on save
+    "files.eol": "\n",  // Enforce LF line endings, important for cross-platform consistency
+
+    // StandardJS configuration
+    "javascript.validate.enable": false,  // Disable the built-in validator to prevent conflicts with StandardJS
+    "standard.enable": true,  // Enable StandardJS
+    "standard.autoFixOnSave": true,  // Automatically fix issues on save
+    "standard.run": "onSave",  // Run StandardJS linting on save
+
+    // Configure paths to look for JavaScript files that need linting
+    "standard.workingDirectories": [
+        "./src",
+        "./test"
+    ],
+
+    // Optional: Define global variables for your project here
+    "standard.globals": [
+        "$",
+        "jQuery",
+        "MY_GLOBAL"
+    ],
+
+    // Exclude some folders from being linted
+    "standard.options": {
+        "ignore": [
+            "**/node_modules/**"
+        ]
+    }
+}
