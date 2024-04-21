@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Drawing</title>
+</head>
+<body>
+<!-- Inputs for triangle parameters -->
+<label for="height">The height of the triangle: </label>
+<input type="number" id="height" value="5" min="1">
+<br>
+<br>
+<label for="symbol"> Symbol for drawing: </label>
+<input type="text" id="symbol" value="+">
+<br>
+<br>
+<label for="inverted">Invert the triangle:</label>
+<input type="checkbox" id="inverted">
+<br>
+<br>
+<!-- Button to draw triangles -->
+<button onclick="drawTriangle()">Draw triangle</button>
+<!-- Output area for triangles -->
+<div id="output"></div>
+
+<script>
+    // Function to draw a triangle based on the height, symbol, and inverted state
+    function drawTriangle() {
+        const height = parseInt(document.getElementById("height").value);
+        const symbol = document.getElementById("symbol").value;
+        const isInverted = document.getElementById("inverted").checked;
+        const output = document.getElementById("output");
+
+        output.innerHTML = ''; // Clear output content
+
+        let triangle = '';
+        if (isInverted) {
+            for (let i = height; i > 0; i--) {
+                triangle += symbol.repeat(i) + '<br>';
+            }
+        } else {
+            for (let i = 1; i <= height; i++) {
+                triangle += symbol.repeat(i) + '<br>';
+            }
+        }
+        
+        output.innerHTML = triangle; // Display the triangle
+    }
+</script>
+
+</body>
+</html>

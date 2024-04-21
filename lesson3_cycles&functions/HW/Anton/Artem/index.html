@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Drawing</title>
+</head>
+<body>
+    <label for="height">Висота трикутника:</label>
+    <input type="number" id="height" value="5" min="1"><br><br>
+
+    <label for="symbol">Символ для малювання:</label>
+    <input type="text" id="symbol" value="+"><br><br>
+
+    <label for="direction">Напрямок трикутника:</label>
+    <select id="direction">
+        <option value="increasing">Зростаючий</option>
+        <option value="decreasing">Зменшуючий</option>
+        <option value="both" hidden>Обидва</option>
+    </select><br><br>
+
+    <label for="both">Показати обидва:</label>
+    <input type="checkbox" id="both" onchange="updateDirection()">
+    <br><br>
+
+    <button onclick="drawTriangles()">Малювати трикутники</button>
+    <div id="output"></div>
+
+<script>
+    function updateDirection() {
+        const bothCheckbox = document.getElementById('both');
+        const directionSelect = document.getElementById('direction');
+        if (bothCheckbox.checked) {
+            directionSelect.value = "both";
+            directionSelect.children[2].hidden = false; // Показати опцію "Обидва"
+        } else {
+            directionSelect.children[2].hidden = true; // Приховати опцію "Обидва"
+            directionSelect.value = "increasing"; // Встановити зростаючий як дефолтний, коли чекбокс не активний
+        }
+    }
+
+    function drawTriangles() {
+        const height = parseInt(document.getElementById('height').value);
+        const symbol = document.getElementById('symbol').value;
+        const direction = document.getElementById('direction').value;
+        const both = document.getElementById('both').checked;
+        const output = document.getElementById('output');
+        output.innerHTML = ''; // Очищення попереднього виводу
+
+        function drawTriangle(height, symbol, increasing) {
+            let result = '';
+            if (increasing) {
+                for (let i = 1; i <= height; i++) {
+                    let row = '';
+                    for (let j = 1; j <= i; j++) {
+                        row += symbol;
+                    }
+                    result += row + "<br>";
+                }
+            } else {
+                for (let i = height; i >= 1; i--) {
+                    let row = '';
+                    for (let j = 1; j <= i; j++) {
+                        row += symbol;
+                    }
+                    result += row + "<br>";
+                }
+            }
+            return result;
+        }
+
+        if (both || direction === "both") {
+            output.innerHTML += drawTriangle(height, symbol, true) + "<br>"; // Зростаючий трикутник
+            output.innerHTML += drawTriangle(height, symbol, false); // Зменшуючий трикутник
+        } else {
+            const increasing = direction === 'increasing';
+            output.innerHTML += drawTriangle(height, symbol, increasing);
+        }
+    }
+</script>
+
+</body>
+</html>

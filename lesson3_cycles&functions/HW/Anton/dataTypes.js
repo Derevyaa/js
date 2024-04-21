@@ -86,7 +86,7 @@
 Опис: 0 || ('0' && 1) спершу обчислюється '0' && 1, що дає 1, бо '0' істинне. Потім 0 || 1 повертає 1.
 
 Код: (+null == false) < 1
-Очікуваний результат: true
+Очікуваний результат: false
 Опис: +null стає 0, яке є еквівалентним false. Таким чином, вираз стає true < 1, що повертає true.
 
 Код: false && true || true
@@ -98,8 +98,8 @@
 Опис: (false || true) повертає true, але false && true в кінцевому підсумку дає false.
 
 Код: (+null == false) < 1 ** 5
-Очікуваний результат: true
-Опис: Як і в попередньому випадку, (+null == false) є true. 1 ** 5 стає 1. Таким чином, true < 1 повертає true.
+Очікуваний результат: false
+Опис: Як і в попередньому випадку, (+null == false) є true. 1 ** 5 стає 1. Таким чином, true < 1 повертає false.
  */
 
 /**
@@ -109,7 +109,7 @@
  * @param {any} result - The result of an expression to be formatted.
  * @returns {string} The formatted string representation of the result.
  */
-function formatResult (result) {
+function formatResult(result) {
   if (typeof result === 'number' || typeof result === 'boolean' || result === null || Number.isNaN(result)) {
     return String(result)
   }
@@ -122,7 +122,7 @@ function formatResult (result) {
  * and its evaluated result. It iterates through this array, and for each element,
  * it logs the expression and its formatted result to the console.
  */
-function outputExpressionResults () {
+function outputExpressionResults() {
   const expressions = [
     { expr: "'number' + 3 + 3", result: 'number' + 3 + 3 },
     { expr: 'null + 3', result: null + 3 },
