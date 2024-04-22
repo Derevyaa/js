@@ -6,9 +6,9 @@ module.exports = multiply;
 
 const result = multiply(4, 6); // Виклик функції з аргументами 4 та 6
 
-console.log("res2: " + null + 3);
+console.log("res2: " + result);
 
-
+/*
 function drawTriangle(height, symbol) {
   if (height > 0) console.log(symbol);
   if (height > 1) console.log(symbol + symbol);
@@ -26,3 +26,4 @@ function drawTriangle(height, symbol) {
 
 // Виклик функції для тестування
 drawTriangle(5, '*');
+*/

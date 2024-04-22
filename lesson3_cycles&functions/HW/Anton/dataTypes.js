@@ -152,3 +152,14 @@ function outputExpressionResults() {
 
 // Call the function to output the results
 outputExpressionResults()
+
+
+let a9 = '6'
+let b9 = 3
+let c9 = 0
+let result9 = a9 + b9 ** c9
+console.log(result9);
+/*
+    В цьому випадку спочатку буде виконуватись підведення у степінь - 3 ** 0 = 1,
+    а потім перетворення 1 в рядок і конкатенація. Результат 61
+*/
