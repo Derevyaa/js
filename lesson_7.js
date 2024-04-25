@@ -961,6 +961,118 @@ console.log(Object.is(5, 5)); // true
 console.log(Object.isExtensible(obj)); //
 
 
+/**
+ * Ключове слово this у JavaScript відіграє важливу роль, оскільки воно вказує на об'єкт, до якого відноситься поточний код, і його значення змінюється залежно від контексту виклику функції. 
+ * Ось детальне пояснення з прикладами правильного та неправильного використання, яке може бути корисним для тестувальника ПЗ.
+ * 
+ * Правильний підхід: Використання this у методах об'єкта
+ * У цьому прикладі this в геттерах та сеттерах правильно вказує на поточний екземпляр класу Tester. 
+ * Геттери та сеттери дозволяють контролювати доступ до внутрішніх полів класу, забезпечуючи інкапсуляцію та безпеку даних.
+ */
+class Tester {
+    constructor(name, testType) {
+        this._name = name;
+        this._testType = testType;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(newName) {
+        this._name = newName;
+    }
+
+    get testType() {
+        return this._testType;
+    }
+
+    set testType(newType) {
+        this._testType = newType;
+    }
+
+    displayInfo() {
+        console.log(`Tester: ${this.name}, Test Type: ${this.testType}`);
+    }
+}
+
+const tester = new Tester("Alex", "Integration");
+tester.displayInfo(); // Виведе: Tester: Alex, Test Type: Integration
+
+tester.name = "Michael"; // Встановлюємо нове ім'я за допомогою сеттера
+tester.testType = "Unit";
+tester.displayInfo(); // Виведе: Tester: Michael, Test Type: Unit
+
+
+
+
+/**
+ * Неправильний підхід: Втрата контексту this та відсутність інкапсуляції
+ * У цьому прикладі this у функції, переданій у setTimeout, не вказує на екземпляр класу Tester. Це стається, оскільки звичайні функції в 
+ * JavaScript мають власний контекст this, який встановлюється на основі контексту виклику (в даному випадку — глобальний об'єкт у браузерах, наприклад, window).
+ *  Тому доступ до this.name і this.testType виводить undefined.
+ */
+
+class Tester {
+    constructor(name, testType) {
+        this.name = name; // Прямий доступ до властивостей, без використання приватних полів
+        this.testType = testType;
+    }
+
+    displayInfo() {
+        setTimeout(function () {
+            console.log(`Tester: ${this.name}, Test Type: ${this.testType}`);
+        }, 1000);
+    }
+}
+
+const tester = new Tester("Alex", "Integration");
+tester.displayInfo(); // Не виведе очікувані значення, виведе: Tester: undefined, Test Type: undefined
+
+
+
+/**
+ Як це виправити:
+Використання стрілкової функції: Стрілкові функції не створюють власний контекст this, тому вони "спадкують" його від батьківського середовища виконання.
+ */
+
+class Tester {
+    constructor(name, testType) {
+        this.name = name;
+        this.testType = testType;
+    }
+
+    displayInfo() {
+        setTimeout(() => {
+            console.log(`Tester: ${this.name}, Test Type: ${this.testType}`);
+        }, 1000);
+    }
+}
+
+const tester = new Tester("Alex", "Integration");
+tester.displayInfo(); // Тепер правильно виведе: Tester: Alex, Test Type: Integration
+/**
+ * Використання методу bind(): Цей метод дозволяє явно встановити значення this для функції.
+ * Ці методи дозволяють виправити втрату контексту this у зворотних викликах, забезпечуючи коректну поведінку і збереження контексту об'єкта
+ */
+
+class Tester {
+    constructor(name, testType) {
+        this.name = name;
+        this.testType = testType;
+    }
+
+    displayInfo() {
+        setTimeout(function () {
+            console.log(`Tester: ${this.name}, Test Type: ${this.testType}`);
+        }.bind(this), 1000);
+    }
+}
+
+const tester = new Tester("Alex", "Integration");
+tester.displayInfo(); // Також правильно виведе: Tester: Alex, Test Type: Integration
+
+
 /*--------------------------------------------------------------------------------------------------------
 Додатково:
 
