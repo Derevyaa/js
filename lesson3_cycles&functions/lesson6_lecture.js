@@ -370,10 +370,12 @@ console.log(str.concat('Pro!', ' in Hillel school!'));
 
 // endWith - використовується для перевірки, чи закінчується рядок заданим підрядком.
 const str = "script.js";
+console.log(str.length);
 console.log(str.endsWith(".js"));
 console.log(str.endsWith("script"));
 console.log(str.endsWith("js", 6)); // параметр, який вказує довжину основного рядка, яку слід враховувати при пошуку. повертає false ми вказали 6, він перевіряє 2 символи перед 6, а це "cr", і вони не є рівними "js"
-console.log(str.endsWith("js", 9)); // true, оскільки "js" дійсно закінчує рядок "script.js" на позиції 9
+console.log(str.endsWith("js", 9));
+console.log(str.endsWith("js", 20)); // true, оскільки "js" дійсно закінчує рядок "script.js" на позиції 9
 console.log(str.endsWith('ript', 6)) // true, оскільки "ript" дійсно закінчує рядок "script.js" на позиції 6
 
 // includes - дозволяє перевірити, чи міститься певний підрядок (для рядків)
