@@ -24,10 +24,10 @@ numbers.forEach(number => console.log(number));
 
 for (let index in colors) {
     console.log(colors[index]);
-};
+}
 
 let index = 0;
 while (index < numbers.length) {
     console.log(numbers[index]);
     index++;
-};
+}

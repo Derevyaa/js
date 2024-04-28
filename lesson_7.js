@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
+
 /**
  * ПРИНЦИПИ ООП
  * Інкапсуляція
 Правильний підхід:
 Інкапсуляція використовується для обмеження доступу до внутрішніх даних класу та забезпечення інтерфейсу через методи.
  */
-class Account {
+class AccountC1 {
     constructor(username, password) {
         this.username = username;
         this._password = password; // Приватна змінна
@@ -15,7 +17,7 @@ class Account {
     }
 }
 
-let userAccount = new Account("user1", "pass123");
+let userAccount = new AccountC1("user1", "pass123");
 console.log(userAccount.validatePassword("pass123")); // true
 
 /**
@@ -38,7 +40,7 @@ console.log(userAccount1.password); // pass123, небезпечний дост�
 Правильний підхід:
 Використання наслідування для розширення функціональності базового класу.
  */
-class User {
+class UserC1 {
     constructor(name) {
         this.name = name;
     }
@@ -48,7 +50,7 @@ class User {
     }
 }
 
-class Admin extends User {
+class Admin extends UserC1 {
     constructor(name, accessLevel) {
         super(name);
         this.accessLevel = accessLevel;
@@ -78,7 +80,7 @@ class User {
     }
 }
 
-class Admin {
+class AdminIc1 {
     constructor(name, accessLevel) {
         this.name = name;
         this.accessLevel = accessLevel;
@@ -93,7 +95,7 @@ class Admin {
     }
 }
 
-let admin1 = new Admin("Alice", "high");
+let admin1 = new AdminIc1("Alice", "high");
 admin1.sayHello(); // Hello, my name is Alice
 
 
@@ -104,7 +106,7 @@ admin1.sayHello(); // Hello, my name is Alice
  */
 
 // Базовий клас для користувачів
-class User {
+class UserC2 {
     // Метод для входу в систему
     login() {
         console.log("User logged in");
@@ -112,7 +114,7 @@ class User {
 }
 
 // Клас для гостей, який наслідується від класу User
-class Guest extends User {
+class Guest extends UserC2 {
     // Перевизначення методу login для специфічної поведінки гостей
     login() {
         console.log("Guest logged in with limited capabilities");
@@ -139,7 +141,7 @@ user2.login();
 стандартного методу login() може призвести до помилок у логіці безпеки програми.
  */
 // Базовий клас для користувачів
-class User {
+class UserIc1 {
     // Метод для входу в систему
     login() {
         console.log("User logged in");
@@ -147,7 +149,8 @@ class User {
 }
 
 // Клас для гостей, який наслідується від класу User
-class Guest extends User {
+
+class GuestIc1 extends UserIc1 {
     // Відсутнє перевизначення методу login
 }
 
@@ -179,8 +182,11 @@ guest1.login(); // Виведе: "User logged in", неправильно для
 
 Структура літерала об'єкта:
 */
+
 var objectName = {
+    // eslint-disable-next-line no-undef
     property1: value1,
+    // eslint-disable-next-line no-undef
     property2: value2,
     method1: function () {
         // код методу
@@ -244,19 +250,20 @@ obj.age = 30;
 За допомогою літералу об'єкта:
 Це найпростіший спосіб створити порожній об'єкт.
  */
-const obj = {};
+
+const obj1 = {};
 /**
  * За допомогою конструктора Object:
 Це ще один стандартний спосіб створення порожнього об'єкта.
  */
-const obj = new Object();
+const obj2 = new Object();
 
 /**
  * За допомогою Object.create():
 Можна створити порожній об'єкт з null як прототип, що означає, що об'єкт не матиме прототипних властивостей чи методів.
  */
 
-const obj = Object.create(null);
+const obj3 = Object.create(null);
 /**
  * Обидва способи створення об'єктів мають різні підходи та наслідки. Ось їх відмінності:
  * 
@@ -265,12 +272,12 @@ const obj = Object.create(null);
 Такий об'єкт буде мати доступ до властивостей та методів, які зазвичай присутні в усіх об'єктах 
  */
 
-const obj = new Object();
-obj.property = "value";
-console.log(obj); // { property: "value" }
+const obj4 = new Object();
+obj4.property = "value";
+console.log(obj4); // { property: "value" }
 
 // Перевірка властивості, яка входить у прототип Object
-console.log(obj.hasOwnProperty("property")); // true
+console.log(obj4.hasOwnProperty("property")); // true
 
 
 /**
@@ -279,13 +286,13 @@ console.log(obj.hasOwnProperty("property")); // true
 які зазвичай присутні в об'єктах JavaScript, таких як toString() або hasOwnProperty(). Він є досить "чистим" об'єктом і може бути корисним, 
 коли вам потрібен простий контейнер для даних без додаткових методів чи властивостей в прототипі.
  */
-
-const obj = Object.create(null);
-obj.property = "value";
-console.log(obj); // { property: "value" }
+/* eslint-disable */
+const obj5 = Object.create(null);
+obj5.property = "value";
+console.log(obj5); // { property: "value" }
 
 // Перевірка властивості, яка не входить у прототип Object
-console.log(obj.hasOwnProperty("property")); // TypeError: obj.hasOwnProperty is not a function
+console.log(obj5.hasOwnProperty("property")); // TypeError: obj.hasOwnProperty is not a function
 
 /**
  * Реальний приклад використання Object.create(null) може бути в ситуації, коли вам потрібно створити об'єкт як "чистий" контейнер для даних без додаткових методів та властивостей в прототипі. 
@@ -409,52 +416,52 @@ console.log(clonedObject);
 Цей метод використовується для отримання значення властивості об'єкта, 
 якщо ключ (ім'я властивості) є відомим на етапі написання коду.  */
 
-let person = {
+let person1 = {
     firstName: "John",
     lastName: "Doe"
 };
 
-console.log(person.firstName); // Отримання значення через крапку
-console.log(person.lastName);
+console.log(person1.firstName); // Отримання значення через крапку
+console.log(person1.lastName);
 
 /* Доступ через квадратні дужки:
 
 Цей метод дозволяє отримати доступ до властивостей об'єкта, коли ключ містить спеціальні символи, пробіли або генерується динамічно.*/
 
-let person = {
+let person2 = {
     "first/Name": "John",
     lastName: "Doe"
 };
 
 // Отримання значення через квадратні дужки
-console.log(person["first/Name"]); // John
+console.log(person2["first/Name"]); // John
 
 
 /* --- Додавання властивостей ---
 
 Для додавання нової властивості ви просто встановлюєте її, вказуючи ключ та значення через крапку або квадратні дужки. */
-let person = {
+let person3 = {
     firstName: "John",
     lastName: "Doe"
 };
 
-console.log(person);
+console.log(person3);
 
 person.pet = "Murzik"; // Додавання властивості через крапку
 
-console.log(person);
+console.log(person3);
 
 
 // Ви також можете додавати властивості до об'єкта динамічно за допомогою змінних як ключів.
 
-let person = {
+let person4 = {
     firstName: "John",
     lastName: "Doe"
 };
 
-person["favFood&snack"] = "pizza"; // Додавання властивості через квадратні дужки
+person4["favFood&snack"] = "pizza"; // Додавання властивості через квадратні дужки
 
-console.log(person["favFood&snack"]);
+console.log(person4["favFood&snack"]);
 
 // Якщо неіснуючій властивості привласнити значення, то ця властивість буде створена в об'єкті
 
@@ -474,6 +481,7 @@ console.log(user.myImaginaryProperty); // Тобто доступ до відс�
 let user1 = {
     name: "admin",
     email: "admin@example.com",
+
     address: { // властивість address, в якому знаходиться об'єкт
         city: "London",
         street: "Uxbridge Rd",
@@ -493,32 +501,32 @@ console.log(user1.address.city);
 
 Ми можемо замінити властивість на інше значення */
 
-let user = {
+let user3 = {
     name: "John",
     sName: "Snow"
 };
 
-console.log("Було: " + user.sName);
-user.sName = 'Dou'; // Перезапис значення властивості
-console.log("Стало: " + user.sName);
+console.log("Було: " + user3.sName);
+user3.sName = 'Dou'; // Перезапис значення властивості
+console.log("Стало: " + user3.sName);
 
 /* --- Видалення властивостей ---
 
  Якщо ми можемо додавати, змінювати нові властивості, то як нам їх видаляти
  Для цього використовується оператор delete  */
 
-let user = {
+let user4 = {
     name: "John",
     sName: "Snow"
 };
 
 console.log("Було:");
-console.log(user);
+console.log(user4);
 
-delete user.sName; // Видалення властивості lastName
+delete user4.sName; // Видалення властивості lastName
 
 console.log("Стало:");
-console.log(user);
+console.log(user4);
 
 /* Destructuring assignment (розпакування) для об'єктів у JavaScript - 
 це спосіб витягнути окремі властивості об'єкта та призначити їх змінним. 
@@ -530,14 +538,14 @@ console.log(user);
 */
 
 // Створення об'єкта з даними про особу
-const person = {
+const person5 = {
     firstName: "John", // Властивість з ім'ям "firstName"
     lastName: "Doe",  // Властивість з прізвищем "lastName"
     age: 30           // Властивість з віком "age"
 };
 
 // Розпакування властивостей об'єкта до змінних
-const { firstName, lastName, age } = person;
+const { firstName, lastName, age } = person5;
 
 // Використання отриманих змінних
 console.log(firstName); // Виведе: John - значення властивості firstName об'єкта person
@@ -558,7 +566,7 @@ console.log(age);       // Виведе: 30 - значення властиво�
 const suffix = "Inform";
 
 // Створення об'єкта з обчислюваними іменами властивостей
-const person = {
+const person6 = {
     firstName: "John",
     lastName: "Doe",
     ["age" + suffix]: 30,  // Обчислюване ім'я властивості: "age" + "Info" = "ageInfo"
@@ -568,14 +576,14 @@ const person = {
 };
 
 // Використання властивостей з обчислюваними іменами
-console.log(person["age" + suffix]); // Виведе: 30 - значення властивості "ageInfo" об'єкта person
-console.log(person.getFullNameInform()); // Виведе: John Doe - результат виклику методу "getFullNameInfo" об'єкта person
+console.log(person6["age" + suffix]); // Виведе: 30 - значення властивості "ageInfo" об'єкта person
+console.log(person6.getFullNameInform()); // Виведе: John Doe - результат виклику методу "getFullNameInfo" об'єкта person
 
 
 const suffix1 = "Info";
 
 // Створення об'єкта з обчислюваними іменами властивостей
-const person = {
+const person7 = {
     firstName: "John",
     lastName: "Doe",
     ["age" + suffix1]: 30,  // Обчислюване ім'я властивості: "age" + "Inform" = "ageInform"
@@ -585,8 +593,8 @@ const person = {
 };
 
 // Використання властивостей з обчислюваними іменами
-console.log(person["age" + suffix1]); // Виведе: 30 - значення властивості "ageInform" об'єкта person
-console.log(person[`getFullName${suffix1}`]()); // Виведе: John Doe - результат виклику методу "getFullNameInform" об'єкта person
+console.log(person7["age" + suffix1]); // Виведе: 30 - значення властивості "ageInform" об'єкта person
+console.log(person7[`getFullName${suffix1}`]()); // Виведе: John Doe - результат виклику методу "getFullNameInform" об'єкта person
 
 /* Обчислювані імена властивостей дозволяють створювати більш гнучкі об'єкти, динамічно визначаючи їхні ключі на основі змінних або виразів. */
 
@@ -600,13 +608,13 @@ var group = {
         mentor: 'Oleg'
     },
     teachersInfo: function () {
-        console.log('Main teacher: ' + group.teachers.teacher + ', mentor: ' + group.teachers.mentor);
-        //  return 'Main teacher: ' + group.teachers.teacher + ', mentor: ' + group.teachers.mentor; // Інший спосіб запису, для нас в цілому нічого не зміниться!
+        // console.log('Main teacher: ' + group.teachers.teacher + ', mentor: ' + group.teachers.mentor);
+        return 'Main teacher: ' + group.teachers.teacher + ', mentor: ' + group.teachers.mentor; // Інший спосіб запису, для нас в цілому нічого не зміниться!
     }
 }
 
-group.teachersInfo();
-//console.log(group.teachersInfo());
+//group.teachersInfo();
+console.log(group.teachersInfo());
 
 /* --------------------------------------------------------------------*/
 
@@ -616,7 +624,7 @@ group.teachersInfo();
 Гетери використовуються для отримання значення властивості, 
 тоді як сетери - для встановлення її значення. Ось приклади:*/
 
-const person = {
+const person8 = {
     firstName: 'John',
     lastName: 'Doe',
     get fullName() {
@@ -624,7 +632,7 @@ const person = {
     }
 };
 
-console.log(person.fullName); // Виведе: John Doe
+console.log(person8.fullName); // Виведе: John Doe
 
 
 /**
@@ -633,29 +641,29 @@ console.log(person.fullName); // Виведе: John Doe
  * 
  * Доступ до властивостей:
  */
-const person = {
+const person9 = {
     name: 'John',
     age: 30
 };
 
-console.log(person.name); // Звернення до властивості name
+console.log(person9.name); // Звернення до властивості name
 
-console.log(person['name'].toUpperCase()); // Виведе: JOHN
-console.log(person['name'].toLowerCase()); // john
+console.log(person9['name'].toUpperCase()); // Виведе: JOHN
+console.log(person9['name'].toLowerCase()); // john
 
 
-const person = {
+const person10 = {
     _name: 'John', // Приватна властивість
     get name() {
         return this._name.toUpperCase(); // Геттер, який повертає значення властивості _name в верхньому регістрі
     }
 };
 
-console.log(person.name); // Звернення до геттера name
+console.log(person10.name); // Звернення до геттера name
 
 
 //а якщо я захочу виводити _name toUpperCase або toLowerCase
-const person = {
+const person11 = {
     _name: 'John', // Приватна властивість
     get upperCaseName() {
         return this._name.toUpperCase(); // Геттер, який повертає значення властивості _name в верхньому регістрі
@@ -665,14 +673,15 @@ const person = {
     }
 };
 
-console.log(person.upperCaseName); // Звернення до геттера upperCaseName
-console.log(person.lowerCaseName);
+console.log(person11.upperCaseName); // Звернення до геттера upperCaseName
+console.log(person11.lowerCaseName);
 
 /**
  * Сеттери - це спеціальні методи об'єктів у JavaScript, 
  * які дозволяють встановлювати значення властивостей об'єкта через спеціальний синтаксис, що нагадує присвоєння значення. Ось приклади використання сеттерів:
  */
-const person = {
+
+const person12 = {
     _age: 25, // Приватна змінна
     get age() {
         return this._age;
@@ -686,9 +695,9 @@ const person = {
     }
 };
 
-console.log(person.age); // Виведе: 25
-person.age = -30; // Виведе: Вік не може бути від'ємним числом
-console.log(person.age); // Виведе: 25 (значення не змінилося через помилку в сеттері)
+console.log(person12.age); // Виведе: 25
+person12.age = -30; // Виведе: Вік не може бути від'ємним числом
+console.log(person12.age); // Виведе: 25 (значення не змінилося через помилку в сеттері)
 
 
 /**
@@ -733,52 +742,52 @@ console.log(person.age); // Виведе: 25 (значення не змінил
 Оператор in: Використовуйте оператор in, щоб перевірити, чи є властивість в об'єкті або його прототипі.
  */
 
-const person = {
+const person13 = {
     name: 'John',
     age: 30
 };
 
-console.log('name' in person); // true
-console.log('salary' in person); // false
+console.log('name' in person13); // true
+console.log('salary' in person13); // false
 
 
 /**
  * Метод hasOwnProperty(): Використовуйте метод hasOwnProperty(), щоб перевірити, чи є властивість без урахування прототипів.
  */
 
-const person = {
+const person14 = {
     name: 'John',
     age: 30
 };
 
-console.log(person.hasOwnProperty('name')); // true
-console.log(person.hasOwnProperty('salary')); // false
+console.log(person14.hasOwnProperty('name')); // true
+console.log(person14.hasOwnProperty('salary')); // false
 
 
 /**
  * Перевірка на undefined: Ви можете перевірити, чи є значення властивості undefined, що також вказує на те, що властивість існує.
  */
 
-const person = {
+const person15 = {
     name: 'John',
     age: 30
 };
 
-console.log(person.name !== undefined); // true
-console.log(person.salary !== undefined); // false
+console.log(person15.name !== undefined); // true
+console.log(person15.salary !== undefined); // false
 
 
 //що буде якщо я вкажу undefined явно
 
-const person = {
+const person16 = {
     name: undefined,
     age: 30
 };
 
-console.log(person.name); // Виведе: undefined
-console.log('name' in person); // true, властивість існує
-console.log(person.hasOwnProperty('name')); // true, властивість існує
-console.log(person.name !== undefined); // !!! false
+console.log(person16.name); // Виведе: undefined
+console.log('name' in person16); // true, властивість існує
+console.log(person16.hasOwnProperty('name')); // true, властивість існує
+console.log(person16.name !== undefined); // !!! false
 
 
 /** --- Перебір властивостей об'єкту ----
@@ -803,28 +812,28 @@ console.log(person.name !== undefined); // !!! false
 
 Object.prototype.extraProperty = 'Extra'; // Додаємо властивість до прототипу
 
-const person = {
+const person17 = {
     name: 'John',
     age: 30
 };
 
-for (const key in person) {
-    // if (person.hasOwnProperty(key)) { // Перевіряємо, чи властивість є власною
-    console.log(key + ': ' + person[key]);
-    // }
+for (const key in person17) {
+    if (person17.hasOwnProperty(key)) { // Перевіряємо, чи властивість є власною
+        console.log(key + ': ' + person17[key]);
+    }
 }
 
 
 /**
  * Метод Object.keys(): Цей метод повертає масив із іменами властивостей об'єкта, які не є у прототипі.
  */
-const person = {
+const person18 = {
     name: 'John',
     age: 30
 };
 
-Object.keys(person).forEach(key => {
-    console.log(key + ': ' + person[key]);
+Object.keys(person18).forEach(key => {
+    console.log(key + ': ' + person18[key]);
 });
 
 
@@ -832,13 +841,13 @@ Object.keys(person).forEach(key => {
  * Метод Object.getOwnPropertyNames(): Цей метод повертає масив із іменами всіх властивостей об'єкта, включаючи і ті, що знаходяться у прототипі.
  */
 
-const person = {
+const person19 = {
     name: 'John',
     age: 30
 };
 
-Object.getOwnPropertyNames(person).forEach(key => {
-    console.log(key + ': ' + person[key]);
+Object.getOwnPropertyNames(person19).forEach(key => {
+    console.log(key + ': ' + person19[key]);
 });
 
 
@@ -846,7 +855,7 @@ Object.getOwnPropertyNames(person).forEach(key => {
  * Яка різниця ?
  */
 
-const person = {
+const person20 = {
     name: 'John',
     age: 30
 };
@@ -856,20 +865,20 @@ Object.prototype.extraProperty = 'Extra';
 
 console.log("Цикл for...in:");
 // Цикл for...in перебирає всі властивості об'єкта, включаючи ті, що знаходяться у прототипі
-for (const key in person) {
-    console.log(key + ': ' + person[key]);
+for (const key in person20) {
+    console.log(key + ': ' + person20[key]);
 }
 
 console.log("\nМетод Object.keys():");
 // Метод Object.keys() повертає масив із іменами власних властивостей об'єкта, що не знаходяться у прототипі
-Object.keys(person).forEach(key => {
-    console.log(key + ': ' + person[key]);
+Object.keys(person20).forEach(key => {
+    console.log(key + ': ' + person20[key]);
 });
 
 console.log("\nМетод Object.getOwnPropertyNames():");
-// Метод Object.getOwnPropertyNames() повертає масив із іменами всіх властивостей об'єкта, включаючи власні та ті, що знаходяться у прототипі
-Object.getOwnPropertyNames(person).forEach(key => {
-    console.log(key + ': ' + person[key]);
+// Метод Object.getOwnPropertyNames() повертає масив із іменами всіх властивостей об'єкта, включаючи власні
+Object.getOwnPropertyNames(person20).forEach(key => {
+    console.log(key + ': ' + person20[key]);
 });
 
 
@@ -900,69 +909,70 @@ Object.values(obj): Повертає масив із значеннями всі
 */
 
 // Створюємо об'єкт
-const obj = { a: 1, b: 2, c: 3 };
-console.log(obj);
+const obj10 = { a: 1, b: 2, c: 3 };
+console.log(obj10);
 // Object.assign(target, ...sources): Копіюємо об'єкт obj в новий об'єкт copiedObj
-const copiedObj = Object.assign({}, obj);
+const copiedObj = Object.assign({}, obj10);
 console.log(copiedObj); // { a: 1, b: 2, c: 3 }
 
 // Object.create(proto, [propertiesObject]): Створюємо новий об'єкт з прототипом obj
-const newObj = Object.create(obj);
+const newObj = Object.create(obj10);
 console.log(newObj); // {}
 
 // Object.defineProperties(obj, props): Додаємо або змінюємо властивості об'єкта obj
-Object.defineProperties(obj, {
+Object.defineProperties(obj10, {
     d: { value: 4, writable: true },
     e: { value: 5, writable: true }
 });
-console.log(obj); // { a: 1, b: 2, c: 3, d: 4, e: 5 }
+console.log(obj10); // { a: 1, b: 2, c: 3, d: 4, e: 5 }
 
-// Object.defineProperty(obj, prop, descriptor): Додаємо або змінюємо властивість об'єкта obj
-Object.defineProperty(obj, 'f', { value: 6, writable: true });
-console.log(obj); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
+// Object.defineProperty(obj10, prop, descriptor): Додаємо або змінюємо властивість об'єкта obj
+Object.defineProperty(obj10, 'f', { value: 6, writable: true });
+console.log(obj10); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
 
-// Object.entries(obj): Повертає масив з парами ключ-значення всіх властивостей об'єкта
-const entries = Object.entries(obj);
+// Object.entries(obj10): Повертає масив з парами ключ-значення всіх властивостей об'єкта
+const entries = Object.entries(obj10);
 console.log(entries); // [["a", 1], ["b", 2], ["c", 3], ["d", 4], ["e", 5], ["f", 6]]
 
-// Object.freeze(obj): Заморожує об'єкт obj, що робить його неможливим для змін
-Object.freeze(obj);
+// Object.freeze(obj10): Заморожує об'єкт obj, що робить його неможливим для змін
+Object.freeze(obj10);
 obj.g = 7; // Викличе помилку в строгому режимі
-console.log(obj); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
+console.log(obj10); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
 
 // Object.fromEntries(iterable): Створює новий об'єкт із масиву, що складається з пар ключ-значення
 const fromEntriesObj = Object.fromEntries(entries);
 console.log(fromEntriesObj); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
 
-// Object.getOwnPropertyDescriptor(obj, prop): Повертає дескриптор властивості об'єкта obj
-const descriptor = Object.getOwnPropertyDescriptor(obj, 'a');
+// Object.getOwnPropertyDescriptor(obj10, prop): Повертає дескриптор властивості об'єкта obj
+const descriptor = Object.getOwnPropertyDescriptor(obj10, 'a');
 console.log(descriptor); // { value: 1, writable: true, enumerable: true, configurable: true }
 
-// Object.getOwnPropertyDescriptors(obj): Повертає об'єкт із дескрипторами всіх властивостей об'єкта obj
-const descriptors = Object.getOwnPropertyDescriptors(obj);
+// Object.getOwnPropertyDescriptors(obj10): Повертає об'єкт із дескрипторами всіх властивостей об'єкта obj
+const descriptors = Object.getOwnPropertyDescriptors(obj10);
 console.log(descriptors); // Повертає дескриптори всіх властивостей
 
-// Object.getOwnPropertyNames(obj): Повертає масив із іменами всіх властивостей об'єкта, включаючи неперераховувані
-const propertyNames = Object.getOwnPropertyNames(obj);
+// Object.getOwnPropertyNames(obj10): Повертає масив із іменами всіх властивостей об'єкта, включаючи неперераховувані
+const propertyNames = Object.getOwnPropertyNames(obj10);
 console.log(propertyNames); // ["a", "b", "c", "d", "e", "f"]
 
-// Object.getOwnPropertySymbols(obj): Повертає масив із символами всіх властивостей об'єкта
-const symbols = Object.getOwnPropertySymbols(obj);
+// Object.getOwnPropertySymbols(obj10): Повертає масив із символами всіх властивостей об'єкта
+const symbols = Object.getOwnPropertySymbols(obj10);
 console.log(symbols); // []
 
-// Object.getPrototypeOf(obj): Повертає прототип об'єкта obj
-const prototype = Object.getPrototypeOf(obj);
+// Object.getPrototypeOf(obj10): Повертає прототип об'єкта obj
+const prototype = Object.getPrototypeOf(obj10);
 console.log(prototype); // {}
 
 // Object.is(value1, value2): Порівнює два значення на рівність, враховуючи випадки NaN та -0
-console.log(Object.is(5, 5)); // true
+console.log(obj10ect.is(5, 5)); // true
 
-// Object.isExtensible(obj): Повертає true, якщо об'єкт obj розширюваний, і false в іншому випадку
-console.log(Object.isExtensible(obj)); //
+// Object.isExtensible(obj10): Повертає true, якщо об'єкт obj розширюваний, і false в іншому випадку
+console.log(Object.isExtensible(obj10)); //
 
 
 /**
- * Ключове слово this у JavaScript відіграє важливу роль, оскільки воно вказує на об'єкт, до якого відноситься поточний код, і його значення змінюється залежно від контексту виклику функції. 
+ * Ключове слово this у JavaScript відіграє важливу роль, оскільки воно вказує на об'єкт, до якого відноситься поточний код, 
+ * і його значення змінюється залежно від контексту виклику функції. 
  * Ось детальне пояснення з прикладами правильного та неправильного використання, яке може бути корисним для тестувальника ПЗ.
  * 
  * Правильний підхід: Використання this у методах об'єкта
@@ -1013,7 +1023,7 @@ tester.displayInfo(); // Виведе: Tester: Michael, Test Type: Unit
  *  Тому доступ до this.name і this.testType виводить undefined.
  */
 
-class Tester {
+class Tester2 {
     constructor(name, testType) {
         this.name = name; // Прямий доступ до властивостей, без використання приватних полів
         this.testType = testType;
@@ -1026,8 +1036,8 @@ class Tester {
     }
 }
 
-const tester = new Tester("Alex", "Integration");
-tester.displayInfo(); // Не виведе очікувані значення, виведе: Tester: undefined, Test Type: undefined
+const tester2 = new Tester2("Alex", "Integration");
+tester2.displayInfo(); // Не виведе очікувані значення, виведе: Tester: undefined, Test Type: undefined
 
 
 
@@ -1036,7 +1046,7 @@ tester.displayInfo(); // Не виведе очікувані значення, 
 Використання стрілкової функції: Стрілкові функції не створюють власний контекст this, тому вони "спадкують" його від батьківського середовища виконання.
  */
 
-class Tester {
+class Tester3 {
     constructor(name, testType) {
         this.name = name;
         this.testType = testType;
@@ -1049,14 +1059,14 @@ class Tester {
     }
 }
 
-const tester = new Tester("Alex", "Integration");
-tester.displayInfo(); // Тепер правильно виведе: Tester: Alex, Test Type: Integration
+const tester3 = new Tester3("Alex", "Integration");
+tester3.displayInfo(); // Тепер правильно виведе: Tester: Alex, Test Type: Integration
 /**
  * Використання методу bind(): Цей метод дозволяє явно встановити значення this для функції.
  * Ці методи дозволяють виправити втрату контексту this у зворотних викликах, забезпечуючи коректну поведінку і збереження контексту об'єкта
  */
 
-class Tester {
+class Tester4 {
     constructor(name, testType) {
         this.name = name;
         this.testType = testType;
@@ -1069,8 +1079,8 @@ class Tester {
     }
 }
 
-const tester = new Tester("Alex", "Integration");
-tester.displayInfo(); // Також правильно виведе: Tester: Alex, Test Type: Integration
+const tester4 = new Tester4("Alex", "Integration");
+tester4.displayInfo(); // Також правильно виведе: Tester: Alex, Test Type: Integration
 
 
 /*--------------------------------------------------------------------------------------------------------

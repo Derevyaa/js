@@ -10,7 +10,7 @@ console.log(str.endsWith("world!")); // Повертає true, бо 'str' зак
 console.log(str.endsWith("world", 11)); // Повертає false, бо перевіряється тільки "Hello, worl"
 
 var fakeData = "JavaScript is fun";
-var find = "Fun"
+var find = "Fun";
 // Перетворюємо обидва рядки на верхній регістр і перевіряємо, чи починається 'str' на 'find'
 var startsWithJS = fakeData.toUpperCase().endsWith(find.toUpperCase());
 console.log(startsWithJS);
@@ -142,7 +142,7 @@ console.log(noSpaces); // "Hello,world!Howareyou?"
 let greeting = String.fromCharCode(1055, 1088, 1080, 1074, 1110, 1090, 32, 1028, 1074, 1072, 1085, 1075, 1077, 1083, 1110, 1086, 1085);
 console.log(greeting); // Виведе: "Привіт Євангеліон"
 
-let greeting1 = "Привіт Євангеліон".charCodeAt(8)
+let greeting1 = "Привіт Євангеліон".charCodeAt(8);
 console.log(greeting1);
 
 console.log("Є".charCodeAt(0));

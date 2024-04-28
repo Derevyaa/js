@@ -111,9 +111,9 @@
  */
 function formatResult(result) {
   if (typeof result === 'number' || typeof result === 'boolean' || result === null || Number.isNaN(result)) {
-    return String(result)
+    return String(result);
   }
-  return `'${result}'`
+  return `'${result}'`;
 }
 
 /**
@@ -143,21 +143,21 @@ function outputExpressionResults() {
     { expr: 'false && true || true', result: false && true || true },
     { expr: 'false && (false || true)', result: false && (false || true) },
     { expr: '(+null == false) < 1 ** 5', result: (+null == false) < 1 ** 5 }
-  ]
+  ];
 
   expressions.forEach(({ expr, result }) => {
-    console.log(`${expr} = ${formatResult(result)}`)
-  })
+    console.log(`${expr} = ${formatResult(result)}`);
+  });
 }
 
 // Call the function to output the results
-outputExpressionResults()
+outputExpressionResults();
 
 
-let a9 = '6'
-let b9 = 3
-let c9 = 0
-let result9 = a9 + b9 ** c9
+let a9 = '6';
+let b9 = 3;
+let c9 = 0;
+let result9 = a9 + b9 ** c9;
 console.log(result9);
 /*
     В цьому випадку спочатку буде виконуватись підведення у степінь - 3 ** 0 = 1,
