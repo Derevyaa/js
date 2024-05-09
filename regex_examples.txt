@@ -1,0 +1,211 @@
+Description: Перевірка наявності тексту
+Regex: /.*./
+Examples:
+Example: Hello, world!
+Example: 12345
+Example: This is a test
+---------------------------
+Description: Перевірка на наявність конкретного слова 'word'
+Regex: /\bword\b/
+Examples:
+Example: This is a word
+Example: word
+Example: Words are powerful
+---------------------------
+Description: Пошук поштової адреси
+Regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/
+Examples:
+Example: user@example.com
+Example: info@test.co.uk
+Example: john.doe123@mail.domain
+---------------------------
+Description: Пошук URL
+Regex: /https?:\/\/(?:[-\w.]|(?:%[\da-fA-F]{2}))+/
+Examples:
+Example: http://example.com
+Example: https://www.test.co.uk
+Example: http://sub.domain.net/page.html
+---------------------------
+Description: Пошук десяткового числа
+Regex: /\d+/
+Examples:
+Example: 123
+Example: 45
+Example: 789
+---------------------------
+Description: Пошук літер або цифр
+Regex: /\w+/
+Examples:
+Example: abc123
+Example: hello123
+Example: test_123
+---------------------------
+Description: Пошук прописних літер
+Regex: /[A-Z]+/
+Examples:
+Example: HELLO
+Example: WORLD
+Example: UPPERCASE
+---------------------------
+Description: Пошук стрічки, що починається з певного слова
+Regex: /^word.*/
+Examples:
+Example: wording
+Example: wordplay
+Example: wordsmith
+---------------------------
+Description: Пошук стрічки, що закінчується певним словом
+Regex: /.*word$/
+Examples:
+Example: backward
+Example: forward
+Example: keyword
+---------------------------
+Description: Пошук числа з плаваючою крапкою
+Regex: /\d+\.\d+/
+Examples:
+Example: 3.14
+Example: 2.718
+Example: 123.456
+---------------------------
+Description: Пошук дати в форматі MM/DD/YYYY
+Regex: /(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d/
+Examples:
+Example: 01/31/2022
+Example: 12/25/2023
+Example: 09/15/2024
+---------------------------
+Description: Пошук IP-адреси
+Regex: /\b(?:\d{1,3}\.){3}\d{1,3}\b/
+Examples:
+Example: 192.168.1.1
+Example: 10.0.0.1
+Example: 255.255.255.0
+---------------------------
+Description: Пошук телефонного номеру в міжнародному форматі
+Regex: /^\+\d{1,3}\s\d{3}\s\d{3}\s\d{2}\s\d{2}$/
+Examples:
+Example: +1 123 456 78 90
+Example: +44 789 123 45 67
+Example: +380 67 123 45 67
+---------------------------
+Description: Пошук телефонного номеру в форматі США
+Regex: /\b\d{3}-\d{3}-\d{4}\b/
+Examples:
+Example: 123-456-7890
+Example: 456-789-0123
+Example: 789-012-3456
+---------------------------
+Description: Пошук слова, яке складається лише з букв
+Regex: /\b[A-Za-z]+\b/
+Examples:
+Example: hello
+Example: world
+Example: regex
+---------------------------
+Description: Пошук слова, яке складається лише з цифр
+Regex: /\b\d+\b/
+Examples:
+Example: 123
+Example: 456
+Example: 7890
+---------------------------
+Description: Пошук HTML-тегів
+Regex: /<([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>.*?<\/\1>/
+Examples:
+Example: <p>This is a paragraph</p>
+Example: <div class='container'><p>Hello, world!</p></div>
+Example: <h1>Welcome</h1>
+---------------------------
+Description: Пошук числа в десятковому, шістнадцятковому або вісімковому форматі
+Regex: /0x[0-9a-fA-F]+|\d+/
+Examples:
+Example: 10
+Example: 0xFF
+Example: 077
+---------------------------
+Description: Пошук стрічки, що містить певні символи
+Regex: /[abc]/
+Examples:
+Example: apple
+Example: banana
+Example: cherry
+---------------------------
+Description: Пошук стрічки, що не містить певних символів
+Regex: /[^abc]/
+Examples:
+Example: def
+Example: 123
+Example: XYZ
+---------------------------
+Description: Пошук пробілів
+Regex: /\s+/
+Examples:
+Example: Hello world
+Example: Tabs	Spaces
+Example: New
+line
+---------------------------
+Description: Пошук не пустих рядків
+Regex: /\S+/
+Examples:
+Example: Hello
+Example: 123
+Example: Regex!
+---------------------------
+Description: Пошук HTML-класу
+Regex: /class="([^"]*)"/
+Examples:
+Example: <div class="container">Content</div>
+Example: <p class="text">Lorem Ipsum</p>
+Example: <a href="#" class="link">Click here</a>
+---------------------------
+Description: Пошук HTML id
+Regex: /id="([^"]*)"/
+Examples:
+Example: <div id="header">Header</div>
+Example: <section id="main-content">Main Content</section>
+Example: <footer id="footer">Footer</footer>
+---------------------------
+Description: Пошук слова, яке починається з певної літери
+Regex: /\b[Aa].*/
+Examples:
+Example: Apple
+Example: aardvark
+Example: Alphabet
+---------------------------
+Description: Пошук слова, яке складається з певної кількості символів
+Regex: /\b\w{5}\b/
+Examples:
+Example: hello
+Example: world
+Example: regex
+---------------------------
+Description: Пошук збігів у верхньому і нижньому регістрах
+Regex: /word/i
+Examples:
+Example: Word
+Example: word
+Example: wOrD
+---------------------------
+Description: Пошук слова, яке містить певну кількість букв та цифр
+Regex: /\b\w{3,5}\d{2,4}\b/
+Examples:
+Example: hello123
+Example: regex4567
+Example: abc12
+---------------------------
+Description: Пошук слова, яке містить певну кількість літер та цифр
+Regex: /\b\w{3,5}\d{2,4}\b/
+Examples:
+Example: hello123
+Example: regex4567
+Example: abc12
+---------------------------
+Description: Пошук слова, яке містить певну кількість цифр та літер
+Regex: /\b\w{3,5}\d{2,4}\b/
+Examples:
+Example: hello123
+Example: regex4567
+Example: abc12
+---------------------------
