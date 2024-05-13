@@ -1,15 +1,3 @@
-// Напишіть regex, котрий знайде кількість чашок кофе.
-
-var text = 'I would like 8 cups of coffee, please.';
-
-// Напишіть regex, котрий знайде ВСІ слова від 4 до 6 символів
-
-var text = 'Hello people of 1974. I come from the future. In 2014 we have laser guns, hover boards and live on the moon!';
-
-// Поміняйте місцями ім'я та прізвище
-
-var name = 'John Smith';
-
 //--------------------------------------------------------------------------
 // Завдання - 1
 // Напиши сценарій, який виведе суму всіх елементів массиву.
@@ -300,3 +288,33 @@ let BankAccount = {
 BankAccount.getBalance();
 BankAccount.deposit(500); BankAccount.getBalance();
 BankAccount.withdraw(100);  BankAccount.getBalance();
+
+
+//--------------------------------------------------------------------------
+
+/*  Завдання - 7:
+
+// Напишіть regex, котрий знайде кількість чашок кофе.
+
+var text = 'I would like 8 cups of coffee, please.';
+
+// Напишіть regex, котрий знайде ВСІ слова від 4 до 6 символів
+
+var text = 'Hello people of 1974. I come from the future. In 2014 we have laser guns, hover boards and live on the moon!';
+
+// Поміняйте місцями ім'я та прізвище
+
+var name = 'John Smith';
+
+//--------------------------------------------------------------------------
+
+/*  Завдання - 8:
+
+//Знайти слова, що містять 'e', та знайти найдовше серед них
+// "Here we explore the vast world of JavaScript and experience exceptional events.";
+
+//--------------------------------------------------------------------------
+
+/*  Завдання - 9:
+//Знайдіть всі числа у тексті, обрахуйте середнє значення та виведіть числа, що більші за середнє
+//In 1974, the population was approximately 4032 and grew to about 5000 in 1992. By 2020, it reached roughly 7500.
